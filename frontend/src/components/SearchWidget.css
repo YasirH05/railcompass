@@ -1,0 +1,99 @@
+.search-widget {
+  padding: 16px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-top: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+.input-group:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input-icon {
+  color: var(--secondary);
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-field label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.input-field input {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  width: 150px;
+}
+
+.input-field input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input-field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--glass-border);
+}
+
+.search-btn {
+  border-radius: 50px;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  .input-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 8px 0;
+  }
+  .search-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}
