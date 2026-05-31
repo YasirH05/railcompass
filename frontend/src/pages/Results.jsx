@@ -43,7 +43,8 @@ export default function Results() {
 
         // Simulate Analyzing delay for the wow factor
         setTimeout(async () => {
-          const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+          // In production (Vercel), we use relative paths so it hits the serverless backend. Locally, we hit localhost:5000.
+          const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
           const res = await axios.get(`${API_URL}/api/trains?${queryParams}`);
           setTrains(res.data);
           setLoading(false);

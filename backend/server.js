@@ -25,6 +25,12 @@ mongoose.connect(MONGODB_URI)
     console.error('⚠️ Failed to connect to MongoDB. Running in memory fallback mode:', err.message);
   });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Only listen on port if running locally (not on Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Export the app for Vercel Serverless
+export default app;
