@@ -16,7 +16,7 @@ function App() {
       <div className="app-container">
         <header className="app-header">
           <Link to="/" className="logo">
-            <img src="/logo.png" alt="Rail Compass Logo" style={{ width: '36px', height: '36px', marginRight: '4px' }} />
+            <img src="/logo.png" alt="Rail Compass Logo" style={{ width: '48px', height: '48px', marginRight: '8px' }} />
             RAIL COMPASS
           </Link>
           <nav>
