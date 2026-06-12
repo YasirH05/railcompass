@@ -4,6 +4,8 @@
   display: inline-block;
   margin-top: 40px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: relative; /* ensure dropdowns are positioned relative to this */
+  z-index: 9999;
 }
 
 .search-form {
@@ -19,6 +21,7 @@
   padding: 8px 24px;
   transition: all 0.3s ease;
   border-radius: 50px;
+  position: relative; /* for positioning the dropdown under this input group */
 }
 
 .input-group:hover {
@@ -33,6 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 
 .input-field label {
@@ -77,6 +81,86 @@
   margin-left: 8px;
 }
 
+/* --- Autocomplete Dropdown Styles --- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  width: 250px;
+  margin-top: 8px;
+  background: rgba(20, 25, 40, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Ensure it stays above everything else */
+  
+  /* Set max height to show 3-4 items, add slider if more */
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 8px 0;
+  box-sizing: border-box;
+  
+  /* Smooth animation */
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom scrollbar for the dropdown */
+.autocomplete-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.autocomplete-dropdown::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+.autocomplete-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.autocomplete-item {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.station-name {
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.station-code {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
 @media (max-width: 768px) {
   .search-form {
     flex-direction: column;
@@ -95,5 +179,8 @@
     width: 100%;
     margin-left: 0;
     margin-top: 8px;
+  }
+  .autocomplete-dropdown {
+    width: calc(100% - 40px);
   }
 }

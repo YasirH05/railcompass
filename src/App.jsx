@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-// import { Train } from 'lucide-react'; // Removed unused icon
+import { Train } from 'lucide-react';
 import Home from './pages/Home';
 import Results from './pages/Results';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Footer from './components/Footer';
 import './index.css';
 
 // Placeholder components for 7-step journey (Weeks 1-2 UI structure)
@@ -26,7 +27,7 @@ function App() {
       <div className="app-container">
         <header className="app-header">
           <Link to="/" className="logo">
-            <img src="/logo.png" alt="Rail Compass Logo" style={{ width: '48px', height: '48px', marginRight: '8px' }} />
+            <img src="/logo.png" alt="Rail Compass Logo" style={{ width: '80px', height: 'auto', marginRight: '12px' }} />
             RAIL COMPASS
           </Link>
           <nav style={{ display: 'flex', alignItems: 'center' }}>
@@ -59,6 +60,8 @@ function App() {
             <Route path="/booking-confirmation" element={<BookingConfirmation />} />
           </Routes>
         </main>
+        
+        <Footer />
       </div>
     </BrowserRouter>
   );

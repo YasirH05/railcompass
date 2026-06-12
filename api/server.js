@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import trainRoutes from './routes/trainRoutes.js';
+import stationRoutes from './routes/stationRoutes.js';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/trains', trainRoutes);
+app.use('/api/stations', stationRoutes);
 
 // Database connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/railwise';
