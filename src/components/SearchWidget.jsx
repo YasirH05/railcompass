@@ -24,6 +24,8 @@ export default function SearchWidget() {
   // Get today's date in YYYY-MM-DD format
   const today = new Date().toISOString().split('T')[0];
 
+  const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
+
   // Handle clicking outside to close dropdowns
   useEffect(() => {
     function handleClickOutside(event) {
@@ -46,7 +48,7 @@ export default function SearchWidget() {
     }
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/stations/search?q=${origin}`);
+        const res = await fetch(`${API_URL}/api/stations/search?q=${origin}`);
         if (res.ok) {
           const data = await res.json();
           setOriginResults(data);
@@ -66,7 +68,7 @@ export default function SearchWidget() {
     }
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/stations/search?q=${destination}`);
+        const res = await fetch(`${API_URL}/api/stations/search?q=${destination}`);
         if (res.ok) {
           const data = await res.json();
           setDestResults(data);
